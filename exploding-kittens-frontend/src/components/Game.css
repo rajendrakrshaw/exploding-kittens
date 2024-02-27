@@ -1,0 +1,138 @@
+/* src/components/Game.css */
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #4a90e2, #59c3c3);
+}
+
+.container {
+  text-align: center;
+  overflow: hidden;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.deck {
+  cursor: pointer;
+  position: relative;
+}
+
+.deck:before {
+  content: '🂠';
+  font-size: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  color: #fff;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  border: 1px solid #000;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  background: linear-gradient(to right, #fefb72, #f0bb31);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:before {
+  content: '🂠';
+  font-size: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  color: #fff;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 60%;
+  object-fit: contain;
+}
+
+.card-name {
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.hidden {
+  background: linear-gradient(to right, #ddd, #bbb);
+  border: none;
+  cursor: not-allowed;
+}
+
+.drawn-card,
+.defused-card {
+  cursor: not-allowed;
+}
+
+.remaining-cards {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.win-message,
+.game-over-message {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ff4444;
+}
+
+@keyframes cardDraw {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card.drawn-card,
+.card.defused-card {
+  animation: cardDraw 0.5s ease-in-out;
+}
+
+@keyframes shuffleCard {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card.shuffle-card {
+  background: linear-gradient(to right, #00bcd4, #3a7bd5);
+  color: #fff;
+  animation: shuffleCard 1s linear;
+}
